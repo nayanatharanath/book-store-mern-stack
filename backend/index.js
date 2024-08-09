@@ -9,8 +9,6 @@ const app = express();
 // Middleware for parsing request body
 app.use(express.json());
 
-app.use("/books", booksRoute);
-
 // Middleware for handling CORS policy
 // Option 1: Allow all origins with default of cors
 // app.use(cors());
@@ -22,6 +20,8 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
+
+app.use("/books", booksRoute);
 
 mongoose
   .connect(mongoDBURL)
